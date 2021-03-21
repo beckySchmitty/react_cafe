@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./FoodMenu.css";
+import { Link, Redirect } from "react-router-dom";
+import "./Menu.css";
 import {
   Card,
   CardBody,
@@ -10,22 +10,22 @@ import {
   ListGroupItem
 } from "reactstrap";
 
-function FoodMenu({ snacks }) {
+function Menu({ foods, start }) {
   return (
     <section className="col-md-4">
       <Card>
         <CardBody>
           <CardTitle className="font-weight-bold text-center">
-            Food Menu
+            Menu 
           </CardTitle>
           <CardText>
             Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            bulk of the cards content.
           </CardText>
           <ListGroup>
-            {snacks.map(snack => (
-              <Link to={`/snacks/${snack.id}`} key={snack.id}>
-                <ListGroupItem>{snack.name}</ListGroupItem>
+            {foods.map(food => (
+              <Link to={`${start}/${food.id}`} key={food.id}>
+                <ListGroupItem>{food.name}</ListGroupItem>
               </Link>
             ))}
           </ListGroup>
@@ -35,4 +35,4 @@ function FoodMenu({ snacks }) {
   );
 }
 
-export default FoodMenu;
+export default Menu;
